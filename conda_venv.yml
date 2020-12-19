@@ -1,0 +1,13 @@
+name: nasa
+channels:
+  - defaults
+dependencies:
+  - python=3.8.5
+  - pandas
+  - numpy
+  - scikit-learn
+  - seaborn
+  - jupyterlab
+  - scipy
+  - matplotlib
+prefix: ./conda_env
