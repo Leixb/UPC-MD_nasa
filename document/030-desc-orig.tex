@@ -3,3 +3,112 @@
 
 \section{Description of the original data}%
 \label{sec:desc-orig}
+
+This dataset gathers close to 10,000 observations made by NASA's 
+Kepler Space Observatory in pursuit of finding new exoplanets that
+could potentially be habitable. 
+We obtained the dataset from Kaggle\footnote{Kepler Exoplanet Search Results 
+dataset on Kaggle:
+\url{https://www.kaggle.com/nasa/kepler-exoplanet-search-results}},
+the online data science and machine learning community.
+
+9.564 observations were made by the Kepler observatory between 2009 and
+2017, when this dataset was published, and all are contained in the dataset.
+Moreover, it is comprised of 50 variables, most of them numerical and a few
+categorical and boolean. Regarding missing data, overall there are 40.557 values
+missing, or what is the same 8.48\% of the dataset. However, if we take out the
+three variables that are largely missing: \texttt{kepler\_name}
+(76.01\% missing), \texttt{koi\_teq\_err1}(100\% missing) and 
+\texttt{koi\_teq\_err2}(100\% missing), the missing data drops
+to just under 3.15\%.
+
+Next, we'll look at the dataset's variables, what they mean, their kind
+and what values they can take:
+
+%\newcommand{\tnote}[1]{\textsuperscript{#1}}
+\newcommand{\dd}{\textsuperscript{\ddag}}
+
+\begin{xltabular}{\textwidth}{ l c X c }
+    \caption{Column description}
+    \label{tab:col_description} \\
+    
+    \toprule
+    \textbf{Variable} & \textbf{Type\textsuperscript{\dagger}} & \textbf{Meaning} & \textbf{Values} \\
+    \midrule
+    \endfirsthead
+    
+    \toprule
+    \textbf{Variable} & \textbf{Type\textsuperscript{\dagger}} & \textbf{Meaning} & \textbf{Values} \\
+    \midrule
+    \endhead
+    
+    \bottomrule
+    \endfoot
+    
+    \bottomrule
+    \endlastfoot
+    
+    \texttt{rowid} & N & Row number & [1-9564]\\
+    
+    \texttt{kepid} & N & Target identification number, as listed
+    in the Kepler Input Catalog &  \\
+    
+    \texttt{kepoi\_name} & N & A number used to identify and track a Kepler Object of Interest (KOI) &  \\
+    
+    \texttt{kepler\_name} & N & Kepler number name identifying the planet &  \\
+    
+    \texttt{koi\_disposition} & C & Category of the KOI from the Exoplanet Archive & \makecell{CANDIDATE\\ FALSE POSITIVE\\ CONFIRMED} \\
+    
+    \texttt{koi\_score} & N & 	A value between 0 and 1 that indicates the confidence in the KOI disposition & [0.0-1.0] \\
+    
+    \texttt{koi\_pdisposition} & C & Pipeline flag that designates the most probable physical explanation of the KOI & \makecell{CANDIDATE\\ FALSE POSITIVE} \\
+    
+    \texttt{koi\_fpflag\_nt} & B & Flag indicating the KOI has a light curve that is not consistent with that of a transiting planet & \makecell{0\\1} \\
+    
+    \texttt{koi\_fpflag\_ss} & B & Flag indicating the KOI is observed to have a significant secondary event, transit shape, or out-of-eclipse variability & \makecell{0\\1} \\
+    
+    \texttt{koi\_fpflag\_co} & B & Flag indicating that the source of the signal is from a nearby star & \makecell{0\\1} \\
+    
+    \texttt{koi\_fpflag\_ec} & B & Flag indicating the KOI shares the same period and epoch as another KOI & \makecell{0\\1} \\
+    
+    \texttt{koi\_period}\dd & N & The interval between consecutive planetary transits &   \\
+    
+    \texttt{koi\_time0bk}\dd & N & The time corresponding to the center of the first detected transit in Barycentric Julian Day (BJD) minus a constant offset of 2,454,833.0 days &  \\
+    
+    \texttt{koi\_impact}\dd & N & The time corresponding to the center of the first detected transit in Barycentric Julian Day (BJD) minus a constant offset of 2,454,833.0 days &  \\
+    
+    \texttt{koi\_duration}\dd & N & The duration of the observed transits &  \\
+    
+    \texttt{koi\_depth}\dd & N & The fraction of stellar flux lost at the minimum of the planetary transit &  \\
+    
+    \texttt{koi\_prad}\dd & N & The radius of the planet &  \\
+    
+    \texttt{koi\_teq} & N & Approximation for the temperature of the planet &  \\
+    
+    \texttt{koi\_insol}\dd & N & Insolation flux i.e. another way to give the equilibrium temperature &   \\
+    
+    \texttt{koi\_model\_snr} & N & Transit depth normalized by the mean uncertainty in the flux during the transits &  \\
+    
+    \texttt{koi\_tce\_plnt\_num} & C & TCE Planet Number federated to the KOI &  \\
+    
+    \texttt{koi\_tce\_delivname} & C & TCE delivery name corresponding to the TCE data federated to the KOI &  \\
+    
+    \texttt{koi\_steff}\dd & N & The photospheric temperature of the star &  \\
+    
+    \texttt{koi\_slogg}\dd & N & The base-10 logarithm of the acceleration due to gravity at the surface of the star &  \\
+    
+    \texttt{koi\_srad}\dd & N & The photospheric radius of the star &  \\
+\end{xltabular}
+
+\begin{itemize}[noitemsep,nolistsep]
+  \item[\dagger] N = Numerical, C = Categorical, B = Boolean
+  \item[\ddag] error TODO
+\end{itemize}
+
+
+In this dataset, the target of classification is quite clear:
+\texttt{koi\_disposition}. This variable classifies the exoplanets into
+four different categories: NOT DISPOSITIONED, FALSE POSITIVE, CANDIDATE and
+CONFIRMED. There isn't a single entry that is NOT DISPOSITIONED and we won't 
+consider CANDIDATE exoplanets, as we want to train and test our models with
+examples we know for sure are (CONFIRMED) or aren't (FALSE POSITIVE) exoplanets.

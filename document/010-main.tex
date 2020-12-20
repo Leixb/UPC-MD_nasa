@@ -10,6 +10,16 @@
 % EXTRA PACKAGES / CONFIG
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% vertical center xtabular columns
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+% table footnotes
+\usepackage[flushleft]{threeparttable} % http://ctan.org/pkg/threeparttable
+\usepackage[flushleft]{threeparttablex} % http://ctan.org/pkg/threeparttable
+
+% break urls on - and /
+\def\UrlBreaks{\do\/\do-}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % METADATA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
