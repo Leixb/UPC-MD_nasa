@@ -55,6 +55,9 @@
 
 \usepackage{comment}
 
+\usepackage{enumitem}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MATHS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -74,7 +77,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{varioref} % reference far away (1)
-\usepackage[colorlinks = true]{hyperref} % links in references (2)
+\usepackage[colorlinks = true, breaklinks=true]{hyperref} % links in references (2)
 \usepackage{cleveref} % smart references (3)
 %hyperref configuration so that it doesn't contrast so much colorlinks,
 \hypersetup{
@@ -104,8 +107,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\usepackage{colortbl, booktabs} % Better tables
-%\usepackage{tabularx}
-%\usepackage{longtable} % Multiple page table (does not work with tabularx)
+\usepackage{tabularx}
+\usepackage{longtable} % Multiple page table (does not work with tabularx)
 \usepackage{xltabular, colortbl, booktabs} % longtable + tabularx (has bug with booktabs: fix below)
 
 % Split cell in lines and more formating options inside table
@@ -113,22 +116,22 @@
 
 %%%
 % bug fix for booktabs + xltabular incompatibility
-\makeatletter
-\def\@BTrule[#1]{%
-  \ifx\longtable\undefined
-    \let\@BTswitch\@BTnormal
-  \else\ifx\hline\LT@hline
-    \nobreak
-    \let\@BTswitch\@BLTrule
-  \else
-     \let\@BTswitch\@BTnormal
-  \fi\fi
-  \global\@thisrulewidth=#1\relax
-  \ifnum\@thisruleclass=\tw@\vskip\@aboverulesep\else
-  \ifnum\@lastruleclass=\z@\vskip\@aboverulesep\else
-  \ifnum\@lastruleclass=\@ne\vskip\doublerulesep\fi\fi\fi
-  \@BTswitch}
-\makeatother
+%\makeatletter
+%\def\@BTrule[#1]{%
+%  \ifx\longtable\undefined
+%    \let\@BTswitch\@BTnormal
+%  \else\ifx\hline\LT@hline
+%    \nobreak
+%    \let\@BTswitch\@BLTrule
+%  \else
+%     \let\@BTswitch\@BTnormal
+%  \fi\fi
+%  \global\@thisrulewidth=#1\relax
+%  \ifnum\@thisruleclass=\tw@\vskip\@aboverulesep\else
+%  \ifnum\@lastruleclass=\z@\vskip\@aboverulesep\else
+%  \ifnum\@lastruleclass=\@ne\vskip\doublerulesep\fi\fi\fi
+%  \@BTswitch}
+%\makeatother
 %%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
