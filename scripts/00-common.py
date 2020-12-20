@@ -10,7 +10,7 @@ import seaborn as sns
 from pandas import plotting
 from pylab import rcParams
 
-fig_width_pt = 455.24411  # Get this from LaTeX using \message{\the\columnwidth}
+fig_width_pt = 455  # Get this from LaTeX using \message{\the\columnwidth}
 
 inches_per_pt = 1.0 / 72.27  # Convert pt to inch
 golden_mean = (sqrt(5) - 1.0) / 2.0  # Aesthetic ratio
@@ -26,7 +26,7 @@ params = {
     "ytick.labelsize": 8,
     "text.usetex": True,
     "figure.figsize": fig_size,
-    "savefig.bbox":"tight",
+    "savefig.bbox": "tight",
 }
 rcParams.update(params)
 
