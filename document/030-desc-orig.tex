@@ -9,6 +9,8 @@
 % original number of examples, original number of columns meaning and kind of values,
 % impact of missing values, etc.
 
+\subsection{The dataset}
+
 This dataset gathers close to 10,000 observations made by NASA's 
 Kepler Space Observatory in pursuit of finding new exoplanets that
 could potentially be habitable. 
@@ -20,30 +22,57 @@ the online data science and machine learning community.
 9.564 observations were made by the Kepler observatory between 2009 and
 2017, when this dataset was published, and all are contained in the dataset.
 Moreover, it is comprised of 50 variables, most of them numerical and a few
-categorical and boolean. Regarding missing data, overall there are 40.557 values
+categorical and boolean.
+
+Regarding missing data, overall there are 40.557 values
 missing, or what is the same 8.48\% of the dataset. However, if we take out the
 three variables that are largely missing: \texttt{kepler\_name}
 (76.01\% missing), \texttt{koi\_teq\_err1}(100\% missing) and 
 \texttt{koi\_teq\_err2}(100\% missing), the missing data drops
-to just under 3.15\%.
+to just under 3.15\%. Out of the remaining variables, most have a missing
+data rate of around 3-4\% with the exception of \texttt{koi\_score}, which
+stands shy of 16\%.
 
-Next, we'll look at the dataset's variables, what they mean, their kind
-and what values they can take:
+\subsection{Target Column}
+
+In this dataset, the target of classification is quite clear:
+\texttt{koi\_disposition}. This variable classifies the exoplanets into
+four different categories:
+
+    \paragraph{CANDIDATE} Observations that have passed all available tests
+    and are awaiting confirmation.
+    
+    \paragraph{FALSE POSITIVE} Observations that have failed at least one
+    of the tests.
+    
+    \paragraph{CONFIRMED} Exoplanet observations that have been confirmed.
+    
+    \paragraph{NOT DISPOSITIONED} There are no entries with this variable since the Kepler satellite was decommissioned
+    in November 2019, and all the data has already been classified in the other categories.
+    
+We won't  consider CANDIDATE exoplanets, as we want to train and test our models
+with examples we know for sure are (CONFIRMED) or aren't (FALSE POSITIVE) 
+exoplanets.
+
+\subsection{Column Description}
+
+In Table \ref{tab:col_description}, we look at the dataset's variables: what
+they mean, their type and what values they can take.
 
 %\newcommand{\tnote}[1]{\textsuperscript{#1}}
 \newcommand{\dd}{\textsuperscript{\ddag}}
 
 \begin{xltabular}{\textwidth}{ l c X c }
-    \caption{Column description}
+    \caption{Column description \textsuperscript{\mathsection}}
     \label{tab:col_description} \\
     
     \toprule
-    \textbf{Variable} & \textbf{Type\textsuperscript{\dagger}} & \textbf{Meaning} & \textbf{Values} \\
+    \textbf{Variable} & \textbf{Type\textsuperscript{\dagger}} & \textbf{Description} & \textbf{Values} \\
     \midrule
     \endfirsthead
     
     \toprule
-    \textbf{Variable} & \textbf{Type\textsuperscript{\dagger}} & \textbf{Meaning} & \textbf{Values} \\
+    \textbf{Variable} & \textbf{Type\textsuperscript{\dagger}} & \textbf{Description} & \textbf{Values} \\
     \midrule
     \endhead
     
@@ -94,9 +123,9 @@ and what values they can take:
     
     \texttt{koi\_model\_snr} & N & Transit depth normalized by the mean uncertainty in the flux during the transits &  \\
     
-    \texttt{koi\_tce\_plnt\_num} & C & TCE Planet Number federated to the KOI &  \\
+    \texttt{koi\_tce\_plnt\_num} & C & TCE Planet Number federated to the KOI & [1-8]\\
     
-    \texttt{koi\_tce\_delivname} & C & TCE delivery name corresponding to the TCE data federated to the KOI &  \\
+    \texttt{koi\_tce\_delivname} & C & TCE delivery name corresponding to the TCE data federated to the KOI & \makecell{q1\_q17\_dr25\_tce\\q1\_q16\_tce\\q1\_q17\_dr24\_tce} \\
     
     \texttt{koi\_steff}\dd & N & The photospheric temperature of the star &  \\
     
@@ -108,22 +137,5 @@ and what values they can take:
 \begin{itemize}[noitemsep,nolistsep]
   \item[\dagger] N = Numerical, C = Categorical, B = Boolean
   \item[\ddag] error TODO
+  \item[\mathsection] Descriptions obtained from NASA Kepler exoplanet KOI documentation \cite{noauthor_exoplanet_nodate}
 \end{itemize}
-
-\subsection{Target variable}
-
-In this dataset, the target of classification is quite clear:
-\texttt{koi\_disposition}. This variable classifies the exoplanets into
-four different categories:
-
-    \paragraph{CANDIDATE} Observations that have yet to be studied
-    
-    \paragraph{FALSE POSITIVE} Observations that have been.
-    
-    \paragraph{CONFIRMED} Exoplanet observations that have been confirmed.
-    
-    \paragraph{NOT DISPOSITIONED} There are no entries with this variable since the Kepler satellite was decommissioned
-    in November 2019, and all the data has already been classified in the other categories.
-    
-We won't  consider CANDIDATE exoplanets, as we want to train and test our models with
-examples we know for sure are (CONFIRMED) or aren't (FALSE POSITIVE) exoplanets.
