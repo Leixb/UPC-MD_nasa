@@ -4,6 +4,11 @@
 \section{Description of the original data}%
 \label{sec:desc-orig}
 
+
+% Where was it obtained (web page link), description of the problem on hands:target of classification,
+% original number of examples, original number of columns meaning and kind of values,
+% impact of missing values, etc.
+
 This dataset gathers close to 10,000 observations made by NASA's 
 Kepler Space Observatory in pursuit of finding new exoplanets that
 could potentially be habitable. 
@@ -105,10 +110,20 @@ and what values they can take:
   \item[\ddag] error TODO
 \end{itemize}
 
+\subsection{Target variable}
 
 In this dataset, the target of classification is quite clear:
 \texttt{koi\_disposition}. This variable classifies the exoplanets into
-four different categories: NOT DISPOSITIONED, FALSE POSITIVE, CANDIDATE and
-CONFIRMED. There isn't a single entry that is NOT DISPOSITIONED and we won't 
-consider CANDIDATE exoplanets, as we want to train and test our models with
+four different categories:
+
+    \paragraph{CANDIDATE} Observations that have yet to be studied
+    
+    \paragraph{FALSE POSITIVE} Observations that have been.
+    
+    \paragraph{CONFIRMED} Exoplanet observations that have been confirmed.
+    
+    \paragraph{NOT DISPOSITIONED} There are no entries with this variable since the Kepler satellite was decommissioned
+    in November 2019, and all the data has already been classified in the other categories.
+    
+We won't  consider CANDIDATE exoplanets, as we want to train and test our models with
 examples we know for sure are (CONFIRMED) or aren't (FALSE POSITIVE) exoplanets.
