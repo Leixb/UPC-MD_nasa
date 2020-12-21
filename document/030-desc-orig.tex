@@ -91,19 +91,19 @@ they mean, their type and what values they can take.
     
     \texttt{kepler\_name} & N & Kepler number name identifying the planet &  \\
     
-    \texttt{koi\_disposition} & C & Category of the KOI from the Exoplanet Archive & \makecell{CANDIDATE\\ FALSE POSITIVE\\ CONFIRMED} \\
+    \texttt{koi\_disposition} & CN & Category of the KOI from the Exoplanet Archive & \makecell{CANDIDATE\\ FALSE POSITIVE\\ CONFIRMED} \\
     
     \texttt{koi\_score} & N & 	A value between 0 and 1 that indicates the confidence in the KOI disposition & [0.0-1.0] \\
     
-    \texttt{koi\_pdisposition} & C & Pipeline flag that designates the most probable physical explanation of the KOI & \makecell{CANDIDATE\\ FALSE POSITIVE} \\
+    \texttt{koi\_pdisposition} & CN & Pipeline flag that designates the most probable physical explanation of the KOI & \makecell{CANDIDATE\\ FALSE POSITIVE} \\
     
-    \texttt{koi\_fpflag\_nt} & B & Flag indicating the KOI has a light curve that is not consistent with that of a transiting planet & \makecell{0\\1} \\
+    \texttt{koi\_fpflag\_nt} & CN & Flag indicating the KOI has a light curve that is not consistent with that of a transiting planet & \makecell{0\\1} \\
     
-    \texttt{koi\_fpflag\_ss} & B & Flag indicating the KOI is observed to have a significant secondary event, transit shape, or out-of-eclipse variability & \makecell{0\\1} \\
+    \texttt{koi\_fpflag\_ss} & CN & Flag indicating the KOI is observed to have a significant secondary event, transit shape, or out-of-eclipse variability & \makecell{0\\1} \\
     
-    \texttt{koi\_fpflag\_co} & B & Flag indicating that the source of the signal is from a nearby star & \makecell{0\\1} \\
+    \texttt{koi\_fpflag\_co} & CN & Flag indicating that the source of the signal is from a nearby star & \makecell{0\\1} \\
     
-    \texttt{koi\_fpflag\_ec} & B & Flag indicating the KOI shares the same period and epoch as another KOI & \makecell{0\\1} \\
+    \texttt{koi\_fpflag\_ec} & CN & Flag indicating the KOI shares the same period and epoch as another KOI & \makecell{0\\1} \\
     
     \texttt{koi\_period}\dd & N & The interval between consecutive planetary transits &   \\
     
@@ -123,9 +123,9 @@ they mean, their type and what values they can take.
     
     \texttt{koi\_model\_snr} & N & Transit depth normalized by the mean uncertainty in the flux during the transits &  \\
     
-    \texttt{koi\_tce\_plnt\_num} & C & TCE Planet Number federated to the KOI & [1-8]\\
+    \texttt{koi\_tce\_plnt\_num} & CN & TCE Planet Number federated to the KOI & [1-8]\\
     
-    \texttt{koi\_tce\_delivname} & C & TCE delivery name corresponding to the TCE data federated to the KOI & \makecell{q1\_q17\_dr25\_tce\\q1\_q16\_tce\\q1\_q17\_dr24\_tce} \\
+    \texttt{koi\_tce\_delivname} & CN & TCE delivery name corresponding to the TCE data federated to the KOI & \makecell{q1\_q17\_dr25\_tce\\q1\_q16\_tce\\q1\_q17\_dr24\_tce} \\
     
     \texttt{koi\_steff}\dd & N & The photospheric temperature of the star &  \\
     
@@ -135,7 +135,10 @@ they mean, their type and what values they can take.
 \end{xltabular}
 
 \begin{itemize}[noitemsep,nolistsep]
-  \item[\dagger] N = Numerical, C = Categorical, B = Boolean
-  \item[\ddag] error TODO
+  \item[\dagger] N = Numerical, CN = Categorical Nominal
+  \item[\ddag] These variables have two corresponding columns named
+  \texttt{koi\_VARNAME\_err1} and \texttt{koi\_VARNAME\_err2} that 
+  represent the $+/-$ error respectively. We didn't include them in the table
+  as they are repetitive and made it more confusing.
   \item[\mathsection] Descriptions obtained from NASA Kepler exoplanet KOI documentation \cite{noauthor_exoplanet_nodate}
 \end{itemize}
