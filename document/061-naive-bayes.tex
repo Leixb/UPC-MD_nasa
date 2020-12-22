@@ -4,7 +4,7 @@
 \subsection{Na\"ive Bayes}%
 \label{sub:naive-bayes}
 
-\newcommand{\sresults}[5]{
+\newcommand{\sresults}[2]{
 \begin{table}[H]
 \centering
 \begin{tabular}{lc}
@@ -53,6 +53,7 @@ After standardizing out data, std=1, mean=0. We executed the algorithm again and
 \sresults{287 & 121 \\ 2 & 190}{0.795}
 
 \subsection{Power Transforms}
+
 Power transforms is a preprocessing algorithm that simply explained aims to make our data more Gaussian-like. We executed Gaussian Na\"ive Bayes and found by far the best results:
 
 \sresults{357 & 51 \\ 19 & 173}{0.883}
