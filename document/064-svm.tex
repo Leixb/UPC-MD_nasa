@@ -9,12 +9,68 @@
 % parameters  selected  for  the  final  run  give  you  the best results for your dataset.
 % Try also to inspect main supports of your machine.
 
+We tried various kernels and performed a grid search for the best parameters for each one. When doing the search, we
+performed a 5-fold cross validation since with 10 folds it took too much time and the results where fairly similar.
+We also tried to reduce the number of features to 12 (from the 25 we selected in \cref{sub:feature_removal}) to reduce
+execution time but the results where significantly worse (around 0.15 less accuracy).
+
+In our case, the best results where obtained with a linear kernel with $C=10^5$.
+In the following sections we show in detail the best results obtained with every kernel and a plot of the parameter search.
+
+\subsection{Linear SVM}
+
+With default parameters we obtained the following results:
+
+\newcommand{\sresults}[5]{
+\begin{table}[H]
+\centering
+\begin{tabular}{lc}
+Confusion matrix on test set: & \( \begin{bmatrix} #1 \end{bmatrix} \) \\
+    \addlinespace[0.5em]
+    Accuracy on test set: & #2
+\end{tabular}
+\end{table}
+}
+
+\newcommand{\results}[6]{
+\begin{table}[H]
+\centering
+\begin{tabular}{lc}
+\toprule
+\multicolumn{2}{c}{Best results (#3)} \\
+\midrule
+Confusion matrix on test set: & \( \begin{bmatrix} #1 \end{bmatrix} \) \\
+    \addlinespace[0.5em]
+    Accuracy on test set: & #2 \\
+    \addlinespace[1em]
+    Number of supports: & #4 (#5 of them have slacks) \\
+    Proportion of supports: & #6 \\
+    \bottomrule
+\end{tabular}
+\end{table}
+}
+
+
+\sresults{387 & 21 \\ 54 & 138}{0.875}
+
+By tuning the $C$ parameter as show in \cref{fig:svm_linear_C_cv} we managed to get much better results.
+
 \begin{figure}[H]
     \centering
     \includegraphics{svm_linear_C_cv}
     \caption{linear SVM C parameter search}%
     \label{fig:svm_linear_C_cv}
 \end{figure}
+
+\results{383 & 25 \\ 26 & 166}{0.915}{$C=10^5$}{288}{269}{0.2057}
+
+We can see that the number of false positives in our confusion matrix halved with respect to the
+default value. We achieved an accuracy of 0.915 and the proportion of supports is only $20\%$
+
+
+
+
+\subsection{Polynomial SVM}
 
 \begin{figure}[H]
     \centering
@@ -29,6 +85,8 @@
     \caption{3rd degree polynomial SVM C parameter search}%
     \label{fig:svm_poly3_C_cv}
 \end{figure}
+
+\subsection{RBF SVM}
 
 \begin{figure}[H]
     \centering
