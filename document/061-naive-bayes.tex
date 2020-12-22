@@ -4,6 +4,16 @@
 \subsection{Na\"ive Bayes}%
 \label{sub:naive-bayes}
 
+\newcommand{\sresults}[5]{
+\begin{table}[H]
+\centering
+\begin{tabular}{lc}
+Confusion matrix on test set: & \( \begin{bmatrix} #1 \end{bmatrix} \) \\
+    \addlinespace[0.5em]
+    Accuracy on test set: & #2
+\end{tabular}
+\end{table}
+}
 % Think about hypothesis of independence of variables.  Do you have enough number of elements to obtain reliable probabilities?
 % Keep that information for the discussion section.
 
@@ -12,13 +22,15 @@ Na\"ive Bayes works on the assumption of independence between variables in the d
 
 % Add correlation Matrix image
 
-The correlations are much closer to 0 than expected. Therefore it isn't that farfetch to assume independence
+The correlations are much closer to 0 than expected. Therefore it isn't that far-fetched to assume independence
 between variables.
 
 There are several types of Na\"ive Bayes algorithms:
-    - Gaussian NB: Used when feature space is quantitative
-    - Bernoulli NB: Used when feature space is Binary
-    - Multinomial NB: Used when feature space is discrete counts
+\begin{itemize}[topsep=0pt]
+    \item Gaussian NB: Used when feature space is quantitative
+    \item Bernoulli NB: Used when feature space is Binary
+    \item Multinomial NB: Used when feature space is discrete counts
+\end{itemize}
 
 Our data is mostly numerical quantitative variables variables, therefore Gaussian Na\"ive Bayes will be applied from here on.
 
@@ -27,12 +39,7 @@ Our data is mostly numerical quantitative variables variables, therefore Gaussia
 First of all we executed the algorithm without performing any extra preprocessing of the data and obtained
 relative poor results.
 
-Confusion matrix on test set:
- [[208 200]
- [  3 189]]
-
-Accuracy on test set:  0.6616666666666666
-
+\sresults{208 & 200 \\ 3 & 189}{0.661}
 
 One of the problems we had when performing Na\"ive Bayes is that most of our data are continuous variables
 which don't exactly follow a normal distribution. When using Gaussian Na\"ive Bayes will treat out data 
@@ -43,24 +50,16 @@ data more Gaussian-like
 
 After standardizing out data, std=1, mean=0. We executed the algorithm again and found better results:
 
-Confusion matrix on test set:
- [[287 121]
- [  2 190]]
-
-Accuracy on test set:  0.795
+\sresults{287 & 121 \\ 2 & 190}{0.795}
 
 \subsection{Power Transforms}
-
 Power transforms is a preprocessing algorithm that simply explained aims to make our data more Gaussian-like. We executed Gaussian Na\"ive Bayes and found by far the best results:
 
-Confusion matrix on test set:
- [[357  51]
- [ 19 173]]
+\sresults{357 & 51 \\ 19 & 173}{0.883}
 
-Accuracy on test set:  0.8833333333333333
-
-We find it quite surprising to see how different normalization techniques yield such different final accuracy results. We decided to continue forward with the Power Transformed data as it had over 0.1
-more accuracy that the rest.
+We find it quite surprising to see how different normalization techniques yield such 
+different final accuracy results. We decided to continue forward with the Power 
+Transformed data as it had over 0.1 more accuracy that the rest.
 
 \subsection{Parameter tuning}
 
