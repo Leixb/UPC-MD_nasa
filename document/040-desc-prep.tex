@@ -13,6 +13,19 @@
 % Normalization? 
 % Remember that you should describe the all procedures performed on your raw dataset.
 
+\subsection{Feature Removal}
+
+Initially, we removed all of the variables which didn't provide any useful information
+such as names and identification numbers: \texttt{kepid}, \texttt{rowid}, 
+\texttt{kepoi\_name} or \texttt{kepler\_name}.
+
+Next, we investigated the presence of missing data in the dataset, and we found that three
+variables were mostly missing. Specifically, \texttt{koi\_teq\_err1} and 
+\texttt{koi\_teq\_err2}, which represent the positive and negative error 
+of \texttt{koi\_teq} respectively, are completely missing. Therefore, we proceeded to 
+remove them as they didn't provide any information whatsoever. How we treated the rest
+of the missing values will be explained in the following section.
+
 \subsection{Example Removal}
 
 As explained in the description of the original dataset, we decided to remove all examples
@@ -37,16 +50,7 @@ are of numerical type.
 \subsection{Feature Selection}%
 \label{sub:feature_removal}
 
-Initially, we removed all of the variables which didn't provide any useful information
-such as names and identification numbers: \texttt{kepid}, \texttt{rowid}, 
-\texttt{kepoi\_name} or \texttt{kepler\_name}.
 
-Next, we investigated the presence of missing data in the dataset, and we found that three
-variables were mostly missing. Specifically, \texttt{koi\_teq\_err1} and 
-\texttt{koi\_teq\_err2}, which represent the positive and negative error 
-of \texttt{koi\_teq} respectively, are completely missing. Therefore, we proceeded to 
-remove them as they didn't provide any information whatsoever. How we treated the rest
-of the missing values will be explained in the following section.
 
 \begin{figure}[H]
     \centering
