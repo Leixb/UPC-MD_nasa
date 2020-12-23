@@ -80,7 +80,13 @@ were of numerical type.
 \subsection{Feature Selection}%
 \label{sub:feature_removal}
 
-The last step in our pre-processing 
+The last step in our pre-processing script, consists in reducing the number of features
+by selecting the ones that provide the best results. To do that, we first need to
+standardize the data, by transforming all variables so they have a mean equal to 0
+and standard deviation to 1.
+
+Then, we loop through all possible numbers of features to be selected, that is from 0
+to 36, the number of remaining features, and do 
 
 
 \begin{figure}[H]

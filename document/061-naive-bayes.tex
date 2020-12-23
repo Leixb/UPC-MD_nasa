@@ -14,16 +14,31 @@ Confusion matrix on test set: & \( \begin{bmatrix} #1 \end{bmatrix} \) \\
 \end{tabular}
 \end{table}
 }
+
+\newcommand{\fresults}[3]{
+\begin{table}[H]
+\centering
+\begin{tabular}{lc}
+Confusion matrix on test set: & \( \begin{bmatrix} #1 \end{bmatrix} \) \\
+    \addlinespace[0.5em]
+    Accuracy on test set: & #2 \\
+    F1 score on test set: & #3
+\end{tabular}
+\end{table}
+}
+
 % Think about hypothesis of independence of variables.  Do you have enough number of elements to obtain reliable probabilities?
 % Keep that information for the discussion section.
 
 
-Na\"ive Bayes works on the assumption of independence between variables in the dataset. First of all we checked weather or not this is a reasonable assumption in our dataset. To do so we calculated the correlation matrix, the farther apart the correlations are from 0 the more dependence there is between variables.
+Na\"ive Bayes works on the assumption of independence between variables in the dataset. First of all we checked weather or not 
+this is a reasonable assumption in our dataset. To do so we calculated the correlation matrix, the farther apart the correlations 
+are from 0 the more dependence there is between variables.
 
 % Add correlation Matrix image
 
-The correlations are much closer to 0 than expected. Therefore it isn't that far-fetched to assume independence
-between variables.
+Despite seeing some strong correlations between pairs of variables, for most pairs these values are much closer to 0 than expected. 
+Therefore it isn't that far-fetched to assume independence between variables.
 
 There are several types of Na\"ive Bayes algorithms:
 \begin{itemize}[topsep=0pt]
@@ -39,7 +54,7 @@ Our data is mostly numerical quantitative variables variables, therefore Gaussia
 First of all we executed the algorithm without performing any extra preprocessing of the data and obtained
 relative poor results.
 
-\sresults{208 & 200 \\ 3 & 189}{0.661}
+\fresults{208 & 200 \\ 3 & 189}{0.661}{0.65}
 
 One of the problems we had when performing Na\"ive Bayes is that most of our data are continuous variables
 which don't exactly follow a normal distribution. When using Gaussian Na\"ive Bayes will treat out data 
@@ -50,17 +65,17 @@ data more Gaussian-like
 
 After standardizing out data, std=1, mean=0. We executed the algorithm again and found better results:
 
-\sresults{287 & 121 \\ 2 & 190}{0.795}
+\fresults{287 & 121 \\ 2 & 190}{0.795}{0.755}
 
 \subsection{Power Transforms}
 
 Power transforms is a preprocessing algorithm that simply explained aims to make our data more Gaussian-like. We executed Gaussian Na\"ive Bayes and found by far the best results:
 
-\sresults{357 & 51 \\ 19 & 173}{0.883}
+\fresults{357 & 51 \\ 19 & 173}{0.883}{0.831}
 
 We find it quite surprising to see how different normalization techniques yield such 
-different final accuracy results. We decided to continue forward with the Power 
-Transformed data as it had over 0.1 more accuracy that the rest.
+different final accuracy and f1-score results. We decided to continue forward with the Power 
+Transformed data because it had by far the best results.
 
 \subsection{Parameter tuning}
 
