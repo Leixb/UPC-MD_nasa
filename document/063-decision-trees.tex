@@ -12,7 +12,8 @@ We decided that in order to find the ideal depth of the decision tree, we had to
     \label{fig:decision_trees_acc}
 \end{figure}
 
-As we see, we tried all values between 1 and 50 and we found out that the best performing depth was around 5. 
+As we see, we tried all values between 1 and 50 and we found out that the best performing depth was around 5, that had the following confusion matrix:
+\fresults{ 382 &  26 \\ 29 & 163 }{0.908}{0.856}
 
 The resulting tree was surprisingly simple, and we could find very good leafs, with a gini index of 0 and 300+ samples in it and also a pretty bad leaf that had a gini value of 0.5 but just 34 samples. The majority of the examples though were classified by two leafs that had a really small gini and a very big number of samples, that'd make it a pretty good classifier.
 

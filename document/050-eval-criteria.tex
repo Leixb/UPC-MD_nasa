@@ -15,14 +15,14 @@
 To obtain a representative validation data set, we decided to split the dataset 70\%
 for training and 30\% for validation and testing. We also checked that the target
 column categories had their proportions respected. However, we didn't create training
-and validation datasets as such, but for each algorithm we split the data using the same
-procedures and seeds.
+and validation datasets CVS's as such. Instead in each algorithm we performed 
+\texttt{train\_test\_split} with the same seed and parameters.
 
 To optimize the parameters for the algorithms that required it we used k-fold cross 
 validation. The value of k chosen for k-fold cross validation is 5. We selected it mainly
 because of computational performance and execution time issues.
 
-Regarding the metrics, we decided to use F-measure to asses the quality of our 
+Regarding the metrics, we decided to use f1-score to asses the quality of our 
 classifiers. We choose it mainly because our dataset is slightly unbalanced, with
-a 30:70 split in our target column, and therefore F-measure provided 
+a 30:70 split in our target column, and therefore f1-score provided 
 clearer understanding of the performance and the behaviour of the algorithms.
