@@ -17,14 +17,23 @@
 
 Initially, we removed all of the variables which didn't provide any useful information
 such as names and identification numbers: \texttt{kepid}, \texttt{rowid}, 
-\texttt{kepoi\_name} or \texttt{kepler\_name}.
+\texttt{kepoi\_name}, \texttt{kepler\_name} or \texttt{koi\_tce\_delivname}.
 
 Next, we investigated the presence of missing data in the dataset, and we found that three
 variables were mostly missing. Specifically, \texttt{koi\_teq\_err1} and 
 \texttt{koi\_teq\_err2}, which represent the positive and negative error 
 of \texttt{koi\_teq} respectively, are completely missing. Therefore, we proceeded to 
 remove them as they didn't provide any information whatsoever. How we treated the rest
-of the missing values will be explained in the following section.
+of the missing values will be explained in an upcoming section.
+
+We also found four features that were flags representing whether the exoplanet
+measurements had passed the respective test. Since this flags directly impact the
+target feature, as \texttt{koi\_disposition} will be FALSE NEGATIVE when it fails
+at least one of the tests and CONFIRMED when it passes all the tests and is confirmed,
+and are calculated using the raw data thus simplifying the problem, we decided to 
+remove them because they described the target very accurately. Furthermore, the
+main objective of this classification problem is to work directly with the Kepler
+measurements and not with processed data such as these flags.
 
 \subsection{Example Removal}
 

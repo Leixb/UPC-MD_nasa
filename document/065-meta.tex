@@ -10,30 +10,60 @@
 \pagebreak
 \subsubsection{Bagging}
 
-\begin{verbatim}
-Accuracy: 0.870 [1]
-Accuracy: 0.872 [2]
-Accuracy: 0.904 [5]
-Accuracy: 0.916 [10]
-Accuracy: 0.916 [20]
-Accuracy: 0.921 [50]
-Accuracy: 0.918 [100]
-Accuracy: 0.920 [200]
+\begin{table}[H]
+\centering
+\caption{Bagging results}%
+\label{tab:bagging}
+\begin{tabular}{rr}
+\toprule
+\multicolumn{2}{c}{no \texttt{max\_features}}\\
+Estimators & Accuracy \\
+\midrule
+1   & 0.870 \\
+2   & 0.872 \\
+5   & 0.904 \\
+10  & 0.916 \\
+20  & 0.916 \\
+50  & 0.921 \\
+100 & 0.918 \\
+200 & 0.920 \\
+\bottomrule
+\end{tabular}
+\quad
+\begin{tabular}{rr}
+\toprule
+\multicolumn{2}{c}{\texttt{max\_features} = 0.35}\\
+Estimators & Accuracy \\
+\midrule
+1  & 0.853 \\
+2  & 0.864 \\
+5  & 0.902 \\
+10 & 0.901  \\
+20 & 0.919  \\
+50 & 0.918  \\
+100 & 0.925   \\
+200 & 0.924 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-Accuracy: 0.853 [1]
-Accuracy: 0.864 [2]
-Accuracy: 0.902 [5]
-Accuracy: 0.901 [10]
-Accuracy: 0.919 [20]
-Accuracy: 0.918 [50]
-Accuracy: 0.925 [100]
+\begin{verbatim}
 \end{verbatim}
  
 \pagebreak
 \subsubsection{RandomForest}
 
- 
-\pagebreak
 \subsubsection{Adaboost}
+
+The final algorithm we implemented is Ada boosting. The base implementation of this algorithms works with decision trees as it's classifier. This type of boosting basically consists on performing different executions of the classifier but changing the weights. The algorithm has two additional hyperparameters \texttt{n\_estimators} and \texttt{learning\_rate}.
+
+Executing the algorithm with the default parameters yields the following results:
+
+\sresults{383 & 25 \\ 25 & 167}{0.916}
+
+After that we fined tuned the parameters and we found that the best combination is \texttt{n\_estimators} 0 40 and \texttt{learning\_rate} = 0.5
+
+
+
 
 % Performance  Majority  Voting,  Bagging, RandomForest  and  Adaboost.   Explain  parameters  selected  for  each  algorithm
