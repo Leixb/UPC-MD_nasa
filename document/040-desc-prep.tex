@@ -1,7 +1,7 @@
 %! TEX root = **/010-main.tex
 % vim: spell spelllang=en:
 
-\section{Pre-processing of data}%
+\section{Description of pre-processing of data}%
 \label{sec:desc-prep}
 
 % Kind of preprocessing done to the original data:  Have you simplified the dataset?
@@ -12,6 +12,41 @@
 % Simplification of values? 
 % Normalization? 
 % Remember that you should describe the all procedures performed on your raw dataset.
+
+\subsection{Example Removal}
+
+As explained in the description of the original dataset, we decided to remove all examples
+that had \texttt{koi\_dispoistion} equal to CANDIDATE, as we want to train and validate our
+models using exoplanets that we know for sure whether they are or aren't confirmed, and not
+with examples that are pending for validation. This resulted in the elimination of 2248 entries
+out of the original 9564, leaving us with 7316 examples.
+
+\subsection{Error Treatment}
+
+We scanned our dataset looking for errors and we weren't able to find any. We checked
+that numerical values were within the possible ranges, like for example that the
+planet radius or temperatures were positive. We also verified that all categorical 
+features only contained the expected categories.
+
+\subsection{Missing Data Treatment}
+
+For the remaining missing data, we decided to fill those empty cells with the mean
+of the feature. We were able to do that because all of our columns with missing values
+are of numerical type.
+
+\subsection{Feature Selection}%
+\label{sub:feature_removal}
+
+Initially, we removed all of the variables which didn't provide any useful information
+such as names and identification numbers: \texttt{kepid}, \texttt{rowid}, 
+\texttt{kepoi\_name} or \texttt{kepler\_name}.
+
+Next, we investigated the presence of missing data in the dataset, and we found that three
+variables were mostly missing. Specifically, \texttt{koi\_teq\_err1} and 
+\texttt{koi\_teq\_err2}, which represent the positive and negative error 
+of \texttt{koi\_teq} respectively, are completely missing. Therefore, we proceeded to 
+remove them as they didn't provide any information whatsoever. How we treated the rest
+of the missing values will be explained in the following section.
 
 \begin{figure}[H]
     \centering
@@ -24,5 +59,5 @@
     \centering
     \caption{Selected features (25)}%
     \label{tab:features}
-    \input{../tables/feature-score-25}
+    \input{../tables/feature-score-25-nice}
 \end{table}
