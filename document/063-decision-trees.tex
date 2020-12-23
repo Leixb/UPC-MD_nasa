@@ -5,8 +5,6 @@
 \label{sub:decision-trees}
 We decided that in order to find the ideal depth of the decision tree, we had to try a range of values and pick the best performing one.
 
-We tried all values between 1 and 50 and we found out that the best performing depth was around 5. 
-
 \begin{figure}[H]
     \centering
     \includegraphics{decision_trees}
@@ -14,7 +12,11 @@ We tried all values between 1 and 50 and we found out that the best performing d
     \label{fig:decision_trees_acc}
 \end{figure}
 
-The resulting tree was surprisingly simple, and we could find very good leafs, with a gini index of 0 and 300+ samples in it and also pretty bad leafs
+As we see, we tried all values between 1 and 50 and we found out that the best performing depth was around 5. 
+
+The resulting tree was surprisingly simple, and we could find very good leafs, with a gini index of 0 and 300+ samples in it and also a pretty bad leaf that had a gini value of 0.5 but just 34 samples. The majority of the examples though were classified by two leafs that had a really small gini and a very big number of samples, that'd make it a pretty good classifier.
+
+To explain in a simple way what the tree does, we could say that it first tries to find the examples that are clearly a False Positive with the rightmost branches and after that, tries to classify the remaining ones. We can understand that this behaviour is reinforced given that our data is not completely  slightly skewed towards 
 
 \begin{figure}[H]
     \centering

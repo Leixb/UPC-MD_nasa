@@ -80,7 +80,7 @@ were of numerical type.
 \subsection{Feature Selection}%
 \label{sub:feature_removal}
 
-The last step in our pre-processing script, consists in reducing the number of features
+The next step in our pre-processing script, consists in reducing the number of features
 by selecting the ones that provide the best results. To do that, we first need to
 standardize the data, by transforming all variables so they have a mean equal to 0
 and standard deviation to 1.
@@ -111,3 +111,11 @@ those 25 columns, which we can see below in Figure \cite{tab:features}.
 
 Therefore, our dataset for the rest of the project consists of the above variables
 together with our target column \texttt{koi\_disposition}.
+
+\subsection{Sampling}
+
+Finally, because we still have 7316 examples, we decided to do reduce the size of the
+dataset to 2000 entries through sampling. We did it mainly due to performance issues,
+to make the dataset more manageable and reduce execution times. We also checked that
+the resulting sampled dataset respected the proportions of our
+target column, and we obtained a very similar one.
