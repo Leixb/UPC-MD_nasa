@@ -6,6 +6,8 @@
 
 \subsubsection{Performance Majority Voting}
 
+Majority voting uses several of the algorithms already commented in this project. Therefore we will use those algorithms with the best combination of preprocessing and hyperparameters we already found.
+
 \begin{table}[H]
 \centering
 \caption{Majority voting results}
@@ -81,7 +83,7 @@ Parameter & Value \\
 
 The final algorithm we implemented is Ada boosting. The base implementation of this algorithms works with decision trees as it's classifier. This type of boosting basically consists on performing different executions of the classifier but changing the weights. The algorithm has two additional hyperparameters \texttt{n\_estimators} and \texttt{learning\_rate}.
 
-After that we fined tuned the parameters and we found that the best combination is \texttt{n\_estimators} 0.4 and \texttt{learning\_rate} = 0.6
+After that we fined tuned the parameters and we found that the best combination is \texttt{n\_estimators} = 60 and \texttt{learning\_rate} = 0.5
 
 \begin{figure}[H]
 \centering

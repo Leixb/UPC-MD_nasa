@@ -51,7 +51,7 @@ Our data consists mostly of numerical quantitative variables, therefore Gaussian
 
 \subsection{Normalization}
 
-We executed the algorithm with no preprocessing, with standardization (mean=0, std=1) 
+We executed the algorithm with no preprocessing, with standardization (mean=0, std=1) and we also tried Power Transform, which is an algorithm that tries to make our data more Gaussian-like.
 
 \begin{table}[H]
 \centering
@@ -72,31 +72,10 @@ We executed the algorithm with no preprocessing, with standardization (mean=0, s
 \end{table}
 
 
-First of all we executed the algorithm without performing any extra preprocessing of the data and obtained
-relative poor results.
-
-\fresults{208 & 200 \\ 3 & 189}{0.661}{0.65}
-
 One of the problems we had when performing Na\"ive Bayes is that most of our data are continuous variables
-which don't exactly follow a normal distribution. When using Gaussian Na\"ive Bayes will treat out data 
-as if they followed such distribution. Therefore we tried different normalization techniques to make our
-data more Gaussian-like
-
-\subsection{Standardization}
-
-After standardizing our data, std=1, mean=0. We executed the algorithm again and found better results:
-
-\fresults{287 & 121 \\ 2 & 190}{0.795}{0.755}
-
-\subsection{Power Transforms}
-
-Power transforms is a preprocessing algorithm that simply explained aims to make our data more Gaussian-like. When executing Gaussian Na\"ive Bayes with this kind of preprocessing we found by far the best results:
-
-\fresults{357 & 51 \\ 19 & 173}{0.883}{0.831}
-
-We find it quite surprising to see how different normalization techniques yield such 
-different final accuracy and f1-score results. We decided to continue forward with the Power 
-Transformed data because it had by far the best results.
+which don't exactly follow a normal distribution. Gaussian Na\"ive Bayes will treat out data as if they followed 
+a Gaussian distribution. That is why the f1-score and accuracy of the Power transformed data is much better than the 
+others.
 
 \subsection{Parameter tuning}
 
