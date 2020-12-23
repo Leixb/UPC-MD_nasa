@@ -37,7 +37,7 @@ are from 0 the more dependence there is between variables.
 
 % Add correlation Matrix image
 
-Despite seeing some strong correlations between pairs of variables, for most pairs these values are much closer to 0 than expected. 
+As we see in \cref{corr_mat} despite seeing some strong correlations between pairs of variables, for most pairs these values are much closer to 0 than expected. 
 Therefore it isn't that far-fetched to assume independence between variables.
 
 There are several types of Na\"ive Bayes algorithms:
@@ -50,6 +50,27 @@ There are several types of Na\"ive Bayes algorithms:
 Our data consists mostly of numerical quantitative variables, therefore Gaussian Na\"ive Bayes will be applied from here on.
 
 \subsection{Normalization}
+
+We executed the algorithm with no preprocessing, with standardization (mean=0, std=1) 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+    & No normalization & Standardization & Power Transform \\
+    \midrule
+    Confusion matrix & 
+    \( \begin{bmatrix} 208 & 200 \\ 3 & 189 \end{bmatrix} \) & 
+    \( \begin{bmatrix} 287 & 121 \\ 2 & 190\end{bmatrix} \) &
+    \( \begin{bmatrix} 357 & 51 \\ 19 & 173\end{bmatrix} \)
+    \\
+    \addlinespace[0.5em]
+    Accuracy: & 0.661 & 0.795 & 0.883 \\
+    F1 score: & 0.65 & 0.755 & 0.831 \\
+    \bottomrule
+\end{tabular}
+\end{table}
+
 
 First of all we executed the algorithm without performing any extra preprocessing of the data and obtained
 relative poor results.
