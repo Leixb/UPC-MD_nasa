@@ -85,16 +85,22 @@ by selecting the ones that provide the best results. To do that, we first need t
 standardize the data, by transforming all variables so they have a mean equal to 0
 and standard deviation to 1.
 
-Then, we loop through all possible numbers of features to be selected, that is from 0
-to 36, the number of remaining features, and do 
-
+Then, we loop through all possible number of features to be selected, 
+excluding the target, that is from 0
+to 36, the number of remaining features, and do cross validation using KNN, saving
+the average score for each number of selected features. Figure \cite{fig:feature_cross}
+below, shows the results that we obtained. As we can see, we obtained the best score
+when only using 25 out of the 36 features.
 
 \begin{figure}[H]
     \centering
-    \includegraphics{kbest}
+    \includegraphics[width=0.6\linewidth]{kbest}
     \caption{Cross validation score for different $k$ values}%
     \label{fig:feature_cross}
 \end{figure}
+
+Once we knew that using the best 25 variables provided the best scores, we selected
+those 25 columns, which we can see below in Figure \cite{tab:features}.
 
 \begin{table}[H]
     \centering
@@ -102,3 +108,6 @@ to 36, the number of remaining features, and do
     \label{tab:features}
     \input{../tables/feature-score-25-nice}
 \end{table}
+
+Therefore, our dataset for the rest of the project consists of the above variables
+together with our target column \texttt{koi\_disposition}.

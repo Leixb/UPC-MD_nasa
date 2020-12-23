@@ -55,6 +55,9 @@ similar.
 \pagebreak
 \subsubsection{RandomForest}
 
+Random Forest is an algorithm based in the combination of multiple decision trees. It has many hyperparameters among which we decided to optimize the 6 following: \texttt{bootstrap}, \texttt{max\_features}, \texttt{max\_features}, \texttt{min\_samples\_leaf}, \texttt{min\_samples\_split}, \texttt{n\_estimators}. At the beginning we wanted to have a pool of 
+many values per parameter. However the time of computation was too high and we ended up doing a 5-fold with 2-3 values per parameter. 
+
 \begin{table}[H]
 \centering
 \caption{RandomForest best parameters}
@@ -66,19 +69,26 @@ Parameter & Value \\
 \texttt{max\_depth} & 150 \\
 \texttt{max\_features} & 10 \\
 \texttt{min\_samples\_leaf} & 5 \\
-\texttt{min\_samples\_split} & 10 \\
-\texttt{n\_estimators} & 100 \\
+\texttt{min\_samples\_split} & 5 \\
+\texttt{n\_estimators} & 500 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\sresults{ 389 &  19 \\ 20 & 172 }{0.935}
+\fresults{ 384 &  24 \\ 21 & 171 }{0.925}{0.883}
 
 \subsubsection{Adaboost}
 
 The final algorithm we implemented is Ada boosting. The base implementation of this algorithms works with decision trees as it's classifier. This type of boosting basically consists on performing different executions of the classifier but changing the weights. The algorithm has two additional hyperparameters \texttt{n\_estimators} and \texttt{learning\_rate}.
 
 After that we fined tuned the parameters and we found that the best combination is \texttt{n\_estimators} 0.4 and \texttt{learning\_rate} = 0.6
+
+\begin{figure}[H]
+\centering
+\includegraphics{boosting}
+\caption{AdaBoost parameter search}%
+\label{fig:boosting}
+\end{figure}
 
 When executing Adaboost with the best parameters found we obtain the following results:
 
