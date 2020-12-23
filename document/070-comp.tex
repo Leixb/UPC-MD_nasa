@@ -12,11 +12,16 @@
 % Are  there  for  some  methods  huge  differences? If  that’s  the  case,why do you think that happens?
 % Final personal evaluation of which is the best method you consider and why.
 
+Once we have all the algorithms implemented we are going to compare them to find out which yields the best results in our dataset. To do so we run the algorithms with their respective best parameters on the testing dataset and we get the following table:
+
 \begin{table}[H]
 \centering
-\caption{mcNemar test $p$-values}
-    \input{../tables/mcnemar_pvalues}
+\caption{Comparison of metrics}%
+\label{tab:comparison}
+\input{../tables/metrics}
 \end{table}
+
+Looking at \cref{tab:comparison} we can see that meta learning algorithms have the best f1-scores and accuracies. Bagging 
 
 \begin{figure}[H]
 \centering

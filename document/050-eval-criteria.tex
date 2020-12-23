@@ -12,24 +12,17 @@
 % Which is the splitting procedure of data set into train and validation dataset? 
 % Description of the procedure followed in order to obtain a representative validation data set.
 
-To evaluate and validate our models, we used k-fold cross validation instead of
-simply using cross validation, as we wanted to avoid the common problems associated
-with it such as wasting data for testing or our models depending on a specific split.
-Furthermore, it provides us with more robust estimators.
+To obtain a representative validation data set, we decided to split the dataset 70\%
+for training and 30\% for validation and testing. We also checked that the target
+column categories had their proportions respected. However, we didn't create training
+and validation datasets as such, but for each algorithm we split the data using the same
+procedures and seeds.
 
-The value of k chosen for k-fold cross validation is 5. We selected it mainly
+To optimize the parameters for the algorithms that required it we used k-fold cross 
+validation. The value of k chosen for k-fold cross validation is 5. We selected it mainly
 because of computational performance and execution time issues.
 
-
-f1 score -> unbalanced dataset
-
-The split of training and validation datasets was done 70:30 and we checked that the
-target column maintained the proportions 
-
-30%
-
-Same seed
-
-to optimize parameters we used k-fold cv
-
-k-fold 5 most of the time, for performance issues but in some cases we increased that value
+Regarding the metrics, we decided to use F-measure to asses the quality of our 
+classifiers. We choose it mainly because our dataset is slightly unbalanced, with
+a 30:70 split in our target column, and therefore F-measure provided 
+clearer understanding of the performance and the behaviour of the algorithms.
