@@ -3,6 +3,8 @@
 \documentclass[aspectratio=169]{beamer}
 \usetheme{metropolis}           % Use metropolis theme
 
+\hyper
+
 \title{NASA Kepler Exoplanet Search}
 \subtitle{Data Mining}
 \date{\today}
@@ -16,8 +18,108 @@ Albert Mercadé
 
 \begin{document}
   \maketitle
-  \section{First Section}
-  \begin{frame}{First Frame}
-    Hello, world!
-  \end{frame}
+  
+\section{Data source}
+\begin{frame}{Our Dataset}
+\begin{center}
+    NASA's Exoplanet Search Results \footnote[frame]{Dataset URL: \url{https://www.kaggle.com/nasa/kepler-exoplanet-search-results}}
+\vspace{5 mm}
+
+\begin{columns}[t]
+    \column{0.3\textwidth}
+    9.564 data records
+    
+    8.48\% of missing data
+    
+    50 variables
+    
+    \column{0.3\textwidth}
+    
+    \bfseries
+    \Huge
+    Puta MD
+    
+    \normalsize
+\end{columns}
+
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Goal}
+\begin{quote}
+The focus of the project will be to correctly classify potential exoplanets based
+on the raw measurements taken by NASA's Kepler Space Observatory.
+\end{quote}
+\end{frame}  
+
+\section{Pre-processing}
+\begin{frame}{Pre-processing steps}
+\large
+\begin{itemize}
+     \itemsep0.5em
+     \item Feature removal
+     \item Example removal 
+     \item Value transformation
+     \item Error and missing data treatment
+     \item Feature selection
+\end{itemize}
+\normalsize
+\end{frame}
+
+\begin{frame}{Evaluation criteria}
+    \begin{columns}[t]
+        \column{0.3\textwidth}
+        \texbf{Validation Dataset}
+        30 (test) :70 (training) split
+        Target category proportions maintained
+        
+        \column{0.3\textwidth}
+        
+        \texbf{Parameter Optimization}
+        5-fold cross validation
+        
+        \texbf{Metrics}
+        F-measure
+        
+        \normalsize
+    \end{columns}
+\end{frame}
+
+\section{Execution of Machine Learning methods}
+
+\begin{frame}{Na\"ive Bayes}
+\end{frame}
+
+\begin{frame}{K-NN}
+\end{frame}
+
+\begin{frame}{Decision Trees}
+\end{frame}
+
+\begin{frame}{Support Vector Machines}
+\end{frame}
+
+\subsection{Meta-learning algorithms}
+
+\begin{frame}{Performance majority voting}
+\end{frame}
+
+\begin{frame}{Bagging}
+\end{frame}
+
+\begin{frame}{Random Forest}
+\end{frame}
+
+\begin{frame}{AdaBoost}
+\end{frame}
+
+\section{Comparison}
+
+\begin{frame}{Comparison}
+\end{frame}
+
+\begin{frame}{Conculsions}
+\end{frame}
+
 \end{document}
