@@ -4,64 +4,75 @@
 \subsection{Meta-learning algorithms}%
 \label{sub:meta}
 
-\pagebreak
 \subsubsection{Performance Majority Voting}
 
-\begin{verbatim}
-Accuracy: 0.899 [Naive Bayes]
-Accuracy: 0.867 [Knn (3)]
-Accuracy: 0.890 [Dec. Tree]
-\end{verbatim}
+\begin{table}[H]
+\centering
+\caption{Majority voting results}
+\begin{tabular}{lr}
+\toprule
+Method & Accuracy \\
+\midrule
+Na\"ive Bayes & 0.884 \\
+K-NN & 0.857 \\
+Decision Tree & 0.877 \\
+\addlinespace[0.5em]
+Majority voting & 0.914 \\
+Majority voting (weighted)  & 0.914 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-Accuracy: 0.914 [Majority Voting]
-\end{verbatim}
+
+With hard voting:
+\sresults{ 375 &  33 \\ 20 & 172 }{ 0.9117 }
+
+\noindent
+With weighted voting (2 1 2):
+\sresults{ 373 &  35 \\ 19 & 173 }{ 0.9100 }
+
+There is no benefit to weighting the votes since all 3 methods offer very similar accuracy.
  
 \pagebreak
 \subsubsection{Bagging}
 
-\begin{table}[H]
+\begin{figure}[H]
 \centering
-\caption{Bagging results}%
-\label{tab:bagging}
-\begin{tabular}{rr}
-\toprule
-\multicolumn{2}{c}{no \texttt{max\_features}}\\
-Estimators & Accuracy \\
-\midrule
-1   & 0.870 \\
-2   & 0.872 \\
-5   & 0.904 \\
-10  & 0.916 \\
-20  & 0.916 \\
-50  & 0.921 \\
-100 & 0.918 \\
-200 & 0.920 \\
-\bottomrule
-\end{tabular}
-\quad
-\begin{tabular}{rr}
-\toprule
-\multicolumn{2}{c}{\texttt{max\_features} = 0.35}\\
-Estimators & Accuracy \\
-\midrule
-1  & 0.853 \\
-2  & 0.864 \\
-5  & 0.902 \\
-10 & 0.901  \\
-20 & 0.919  \\
-50 & 0.918  \\
-100 & 0.925   \\
-200 & 0.924 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\includegraphics{bagging}
+\caption{Bagging parameter search}%
+\label{fig:bagging}
+\end{figure}
+
+The best results where obtained with: $\texttt{n\_est} = 200, \texttt{max\_features} = 0.9$. Nonetheless, as we
+can see in \cref{fig:bagging} results with $\texttt{n\_est} \geq 50, \texttt{max\_features} \geq 0.3$ are pretty
+similar.
+
+\sresults{ 388 &  20 \\ 24  & 168 }{0.9267}
 
 \begin{verbatim}
 \end{verbatim}
  
 \pagebreak
 \subsubsection{RandomForest}
+
+\begin{table}[H]
+\centering
+\caption{RandomForest best parameters}
+\begin{tabular}{lr}
+\toprule
+Parameter & Value \\
+\midrule
+\texttt{bootstrap} & True \\
+\texttt{max\_depth} & 150 \\
+\texttt{max\_features} & 10 \\
+\texttt{min\_samples\_leaf} & 5 \\
+\texttt{min\_samples\_split} & 10 \\
+\texttt{n\_estimators} & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\sresults{ 389 &  19 \\ 20 & 172 }{0.935}
 
 \subsubsection{Adaboost}
 

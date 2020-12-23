@@ -35,16 +35,34 @@ remove them because they described the target very accurately. Furthermore, the
 main objective of this classification problem is to work directly with the raw Kepler
 measurements and not with processed data such as these flags.
 
-Furthermore, there are two columns, \texttt{koi\_pdisposition} and \texttt{koi\_score},
-that are directly linked to the previously mentioned flags, as \texttt{} 
+Furthermore, there are two other columns, \texttt{koi\_pdisposition} and 
+\texttt{koi\_score},
+that we decided to erase as well, as 
+\texttt{koi\_pdisposition} represents the predicted \texttt{koi\_disposition}
+(our target) and \texttt{koi\_score} illustrates the level of confidence of
+that prediction, based on the aforementioned flags. Hence, they are directly
+linked to our target as well. As a matter of fact, in close to 70\% of the
+7316 remaining examples the \texttt{koi\_disposition} and \texttt{koi\_pdisposition}
+have the same value.
 
 \subsection{Example Removal}
 
-As explained in the description of the original dataset, we decided to remove all examples
-that had \texttt{koi\_dispoistion} equal to CANDIDATE, as we want to train and validate our
-models using exoplanets that we know for sure whether they are or aren't confirmed, and not
-with examples that are pending for validation. This resulted in the elimination of 2248 entries
-out of the original 9564, leaving us with 7316 examples.
+As explained in the description of the original dataset, we decided to remove all 
+examples that had \texttt{koi\_dispoistion} equal to CANDIDATE, as we want to
+train and validate our models using exoplanets that we know for sure whether
+they are or aren't confirmed, and not with examples that are pending for validation.
+This resulted in the elimination of 2248 entries out of the original 9564, 
+leaving us with 7316 examples.
+
+\subsection{Value Transformation}
+
+Because some algorithms only work with numerical features, we had to transform our
+target column from categorical to numerical. Since we had removed all instances of
+CANDIDATE, there were no examples of NOT DISPOSITIONED and the categories don't follow
+a particular order, we opted for One-Hot encoding. Furthermore, as we only had two
+categories, we didn't need to create extra columns, we simply transformed the existing
+\texttt{koi\_disposition} column to be 1 when the example is CONFIRMED and 0 when
+it isn't, meaning it is a FALSE POSITIVE.
 
 \subsection{Error Treatment}
 
@@ -62,7 +80,7 @@ were of numerical type.
 \subsection{Feature Selection}%
 \label{sub:feature_removal}
 
-Lastly, we looked at which number of features gave us the 
+The last step in our pre-processing 
 
 
 \begin{figure}[H]
