@@ -78,13 +78,11 @@ Parameter & Value \\
 
 The final algorithm we implemented is Ada boosting. The base implementation of this algorithms works with decision trees as it's classifier. This type of boosting basically consists on performing different executions of the classifier but changing the weights. The algorithm has two additional hyperparameters \texttt{n\_estimators} and \texttt{learning\_rate}.
 
-Executing the algorithm with the default parameters yields the following results:
+After that we fined tuned the parameters and we found that the best combination is \texttt{n\_estimators} 0.4 and \texttt{learning\_rate} = 0.6
 
-\sresults{383 & 25 \\ 25 & 167}{0.916}
+When executing Adaboost with the best parameters found we obtain the following results:
 
-After that we fined tuned the parameters and we found that the best combination is \texttt{n\_estimators} 0 40 and \texttt{learning\_rate} = 0.5
-
-
+\fresults{ 383 &  25 \\ 21 & 171 }{0.923}{0.881}
 
 
 % Performance  Majority  Voting,  Bagging, RandomForest  and  Adaboost.   Explain  parameters  selected  for  each  algorithm
