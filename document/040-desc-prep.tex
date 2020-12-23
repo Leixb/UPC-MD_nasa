@@ -26,12 +26,11 @@ of \texttt{koi\_teq} respectively, are completely missing. Therefore, we proceed
 remove them as they didn't provide any information whatsoever. How we treated the rest
 of the missing values will be explained in an upcoming section.
 
-We also found four features that were flags representing whether the exoplanet
+We also removed four features that were flags representing whether the exoplanet
 measurements had passed some tests. Since this flags directly impact the
 target feature, as \texttt{koi\_disposition} will be FALSE NEGATIVE when it fails
 at least one of the tests and CONFIRMED when it passes all the tests and is confirmed,
-and are calculated using the raw data thus simplifying the problem, we decided to 
-remove them because they described the target very accurately. Furthermore, the
+and are calculated using the raw data thus simplifying the problem. Furthermore, the
 main objective of this classification problem is to work directly with the raw Kepler
 measurements and not with processed data such as these flags.
 
@@ -87,7 +86,7 @@ and standard deviation to 1.
 
 Then, we loop through all possible number of features to be selected, 
 excluding the target, that is from 0
-to 36, the number of remaining features, and do cross validation using KNN, saving
+to 36, the number of remaining features, and do cross validation using Knn, saving
 the average score for each number of selected features. \Cref{fig:feature_cross}
 below, shows the results that we obtained. As we can see, we obtained the best score
 when only using 25 out of the 36 features.
