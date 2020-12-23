@@ -47,7 +47,7 @@ There are several types of Na\"ive Bayes algorithms:
     \item Multinomial NB: Used when feature space is discrete counts
 \end{itemize}
 
-Our data is mostly numerical quantitative variables variables, therefore Gaussian Na\"ive Bayes will be applied from here on.
+Our data consists mostly of numerical quantitative variables, therefore Gaussian Na\"ive Bayes will be applied from here on.
 
 \subsection{Normalization}
 
@@ -63,13 +63,13 @@ data more Gaussian-like
 
 \subsection{Standardization}
 
-After standardizing out data, std=1, mean=0. We executed the algorithm again and found better results:
+After standardizing our data, std=1, mean=0. We executed the algorithm again and found better results:
 
 \fresults{287 & 121 \\ 2 & 190}{0.795}{0.755}
 
 \subsection{Power Transforms}
 
-Power transforms is a preprocessing algorithm that simply explained aims to make our data more Gaussian-like. We executed Gaussian Na\"ive Bayes and found by far the best results:
+Power transforms is a preprocessing algorithm that simply explained aims to make our data more Gaussian-like. When executing Gaussian Na\"ive Bayes with this kind of preprocessing we found by far the best results:
 
 \fresults{357 & 51 \\ 19 & 173}{0.883}{0.831}
 
@@ -88,4 +88,4 @@ Na\"ive Bayes doesn't have many hyperparameters, in fact we will only analyse \t
     \label{fig:naive_bayes_smoothing_cv}
 \end{figure}
 
-Looking at the image we can see that the accuracy barely changes when the \texttt{var\_smoothing} is in the range $[10^{-9}, 10^{-2}]$. Therefore its better to leave the default $10^{-9}$.
+Looking at the image we can see that the f1-score barely changes when the \texttt{var\_smoothing} is in the range $[10^{-9}, 10^{-2}]$. Therefore its better to leave the default $10^{-9}$.
