@@ -75,7 +75,7 @@ Albert Mercadé
 
 \begin{document}
   \maketitle
-  
+
 \section{Data source}
 \begin{frame}{Our Dataset}
 \begin{center}
@@ -84,25 +84,25 @@ Albert Mercadé
 
 \begin{columns}[t]
     \column{0.3\textwidth}
-    
+
     \large
     \textbf{Original Dataset}
-    
+
     \small
-    
+
     9.564 data records
-    
+
     8.48\% of missing data
-    
+
     50 variables
-    
+
     \column{0.3\textwidth}
     \large
     \textbf{Target column}
-    
+
     \footnotesize
     \texttt{koi\_disposition}
-    
+
     \begin{itemize}
         \itemsep0.05em
         \item[--] CONFIRMED
@@ -111,7 +111,7 @@ Albert Mercadé
         \item[--] (NOT DISPOSED)
     \end{itemize}
     % TODO
-   
+
 \end{columns}
 
 \end{center}
@@ -123,7 +123,7 @@ Albert Mercadé
 The focus of the project is to correctly classify potential exoplanets based
 on the raw measurements taken by NASA's Kepler Space Observatory.
 \end{quote}
-\end{frame}  
+\end{frame}
 
 \section{Pre-processing}
 \begin{frame}{Pre-processing steps}
@@ -131,7 +131,7 @@ on the raw measurements taken by NASA's Kepler Space Observatory.
 \begin{itemize}
      \itemsep0.5em
      \item Feature removal
-     \item Example removal 
+     \item Example removal
      \item Value transformation
      \item Error and missing data treatment
      \item Feature selection
@@ -157,15 +157,15 @@ on the raw measurements taken by NASA's Kepler Space Observatory.
     	\item[--] Target category proportions maintained
     \end{itemize}
     \normalsize
- 
+
     \textbf{Parameter Optimization}
-    
+
     \small
     5-fold cross validation
-    
+
     \normalsize
     \textbf{Metrics}
-    
+
     \small
     F-measure
     \normalsize
@@ -180,8 +180,8 @@ on the raw measurements taken by NASA's Kepler Space Observatory.
 \toprule
     & No normalization & Standardization & Power Transform \\
     \midrule
-    Confusion matrix & 
-    \( \begin{bmatrix} 208 & 200 \\ 3 & 189 \end{bmatrix} \) & 
+    Confusion matrix &
+    \( \begin{bmatrix} 208 & 200 \\ 3 & 189 \end{bmatrix} \) &
     \( \begin{bmatrix} 287 & 121 \\ 2 & 190\end{bmatrix} \) &
     \( \begin{bmatrix} 357 & 51 \\ 19 & 173\end{bmatrix} \)
     \\
@@ -290,11 +290,11 @@ Majority voting (weighted)  & 0.914 \\
 \framebreak
 
 With hard voting:
-\sresults{ 375 &  33 \\ 20 & 172 }{ 0.9117 }{ 0.8622 }
+\fresults{ 375 &  33 \\ 20 & 172 }{ 0.9117 }{ 0.8622 }
 
 \noindent
 With weighted voting (2 1 2):
-\sresults{ 373 &  35 \\ 19 & 173 }{ 0.9100 }{ 0.8492 }
+\fresults{ 373 &  35 \\ 19 & 173 }{ 0.9100 }{ 0.8492 }
 \end{frame}
 
 \begin{frame}{Bagging}
